@@ -44,7 +44,7 @@
   
   ### Step 2. 引入Jar包
   
-  **(1) 下载Jar包**
+  #### (1) 下载Jar包
   
   这里需要引入腾讯的官方 SDK JAR 包，你可以点击这里下载 [QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  *(下载完成后只需要解压出里面 lib 文件夹里的 jar文件 即可)*
   
@@ -52,7 +52,7 @@
   当然你也可以直接使用本项目**qq_sdk_jar文件夹**里的jar包 (这个jar包为腾讯官方于为2018年5月更新的版本，你也可以点击这里查看 [最新官方SDK包版本](http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD) )
   
   
-  **(2) 在项目里引入Jar包**
+  #### (2) 在项目里引入Jar包
   
   在项目里引入jar包，这里还是给出一种引入jar的方法（其他方法也可以）
   
