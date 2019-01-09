@@ -63,14 +63,13 @@
   #### (2) 在项目里引入Jar包
   
   
-  在项目里引入jar包，这里还是给出一种引入Jar包的方法（其他方法也可以）
+  在项目里引入jar包，这里还是给出一种```引入Jar包```的方法（其他方法也可以）
   
-  以**Android Studio**为例：
+  以```Android Studio```为例：
   
-  **(a)** ```将下载好的jar包放到项目文件夹的 ```app\libs``` 文件夹下```
+  **(a)** 将下载好的jar包放到项目文件夹的 ```app\libs``` 文件夹下
 
-  **(b)** ```在 Android Studio 中点击File->Project Structure，然后选择app->Dependencies，这时候点击右上角的 **"+"** 号，选择 **“Jar 
-  dependency”**，然后选择libs文件夹里的jar包添加即可```
+  **(b)** 在 ```Android Studio``` 中点击 ```File->Project Structure```，然后选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，然后选择 ```libs``` 文件夹里的 ```jar包``` 添加即可
   
   
   
