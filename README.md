@@ -53,11 +53,13 @@
   #### (1) 下载Jar包
   
   
-  你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  
+  你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)
+  
   *(下载完成后只需要解压出里面 lib 文件夹里的 jar文件 即可)*
 
 
-  也可以直接使用本项目 ```qq_sdk_jar文件夹``` 里的 ```jar包``` 
+  也可以直接使用本项目 ```qq_sdk_jar文件夹``` 里的 ```jar包```
+  
   *(这个jar包为腾讯官方于为2018年5月更新的版本，你也可以点击这里查看 [最新官方SDK包版本](http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD) )*
 
   
@@ -65,13 +67,13 @@
   #### (2) 在项目里引入Jar包
   
   
-  这里给出一种```引入Jar包```的方法（其他方法也可以）
+  这里给出一种引入Jar包的方法（其他方法也可以）
   
-  以```Android Studio```为例：
+  以*Android Studio*为例：
   
   **(a)** 将下载好的jar包放到项目文件夹的 ```app\libs``` 文件夹下
 
-  **(b)** 在 ```Android Studio``` 中点击 ```File->Project Structure```，然后选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，然后选择 ```libs``` 文件夹里的 ```jar包``` 添加即可
+  **(b)** 在 *Android Studio* 中点击 ```File->Project Structure```，然后选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，然后选择 ```libs``` 文件夹里的 ```jar包``` 添加即可
   
   
   
