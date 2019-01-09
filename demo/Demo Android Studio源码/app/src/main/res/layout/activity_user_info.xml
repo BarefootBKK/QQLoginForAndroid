@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.UserInfoActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/head_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/yellow_vip_level"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/is_yellow_vip"
+                app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="是否黄钻vip:"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="黄钻等级:"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="出生年:"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/nickname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/head_img"
+                app:layout_constraintTop_toTopOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/is_yellow_year_vip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/yellow_vip_level"
+                app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/is_yellow_vip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/city"
+                app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+            <TextView
+                android:id="@+id/birth_year"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/nickname"
+                app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="是否黄钻年vip:"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/birth_year"
+                app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:text="昵称:"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/head_img"
+                app:layout_constraintTop_toBottomOf="@+id/head_img" />
+
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/province"
+                app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="省份:"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView7"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="城市:"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="性别:"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/province"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/gender"
+                app:layout_constraintTop_toTopOf="@+id/textView5" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:background="#5099ec"
+        android:text="退出登录"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

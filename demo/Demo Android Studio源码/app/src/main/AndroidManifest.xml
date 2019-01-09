@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.qqlogin">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_qq"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_qq"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.MainActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.UserInfoActivity"
+            android:launchMode="singleTask"></activity>
+
+        <!-- QQ登录开始 -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- 这地方需要用你在开放平台申请的appid:tencent+appid -->
+                <data android:scheme="tencent1108103648" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- QQ登录结束 -->
+    </application>
+
+    <!-- 获取网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+</manifest>
