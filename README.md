@@ -10,6 +10,8 @@
   
   
   **(1)** 将下列代码复制到 ```AndroidManifest.xml``` 文件的 ```<application></application>``` 中：
+  
+  *(注意将代码里的app_id完善)*
     
   ```
     <activity
