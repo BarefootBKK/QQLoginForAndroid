@@ -7,29 +7,29 @@
   
 ## 引入本项目
 
-  ### 1.修改AndroidManifest文件
+  ### 1. 修改AndroidManifest文件
   
-    将下列代码复制到AndroidManifest.xml文件的**<application></application>**中：
+  将下列代码复制到AndroidManifest.xml文件的 **<application></application>** 中：
     
-    '''
-        <!-- QQ登录开始 -->
-        <activity
-            android:name="com.tencent.tauth.AuthActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+  '''
+  <!-- QQ登录开始 -->
+  <activity
+      android:name="com.tencent.tauth.AuthActivity"
+      android:launchMode="singleTask"
+      android:noHistory="true">
+      <intent-filter>
+          <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <!-- 这地方需要用你在开放平台申请的appid:tencent+appid -->
-                <data android:scheme="tencent1108103648" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.tencent.connect.common.AssistActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="behind"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!-- QQ登录结束 -->
-    '''
+          <category android:name="android.intent.category.DEFAULT" />
+          <category android:name="android.intent.category.BROWSABLE" />
+          <!-- 这地方需要用你在开放平台申请的appid:tencent+appid -->
+          <data android:scheme="tencent1108103648" />
+      </intent-filter>
+  </activity>
+  <activity
+      android:name="com.tencent.connect.common.AssistActivity"
+      android:configChanges="orientation|keyboardHidden"
+      android:screenOrientation="behind"
+      android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+  <!-- QQ登录结束 -->
+  '''
