@@ -93,8 +93,8 @@
       protected void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_main);
-          // 实例QQLoginManager, 化传入你的app_id
-          qqLoginManager = new QQLoginManager("", this);
+          // 实例化QQLoginManager, 传入你的app_id
+          qqLoginManager = new QQLoginManager("app_id", this);
       }
 
       @Override
@@ -108,9 +108,6 @@
           // 登录成功
       }
 
-      /**
-       * 
-       */
       @Override
       public void onQQLoginCancel() {
           // 登录取消
