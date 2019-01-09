@@ -9,7 +9,7 @@
   
   
   
-  ## Step 1. 引入SDK Jar包
+  ## Step 1. 引入SDK JAR包
   
   
   ***下载Jar包***
