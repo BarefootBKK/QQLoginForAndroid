@@ -40,7 +40,7 @@ public class QQLoginManager {
     private Activity mActivity;
 
     /**
-     * 构造函数，包括app_id
+     * 构造函数
      * @param app_id
      * @param o
      */
