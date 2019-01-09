@@ -7,7 +7,7 @@
   
 ## 引入本项目
 
-  ### 1. 修改AndroidManifest文件
+  ### Step 1. 修改AndroidManifest文件
   
   
   **(1)** 将下列代码复制到 ```AndroidManifest.xml``` 文件的 ```<application></application>``` 中：
@@ -41,3 +41,6 @@
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   ```
   
+  ### 2. 引入Jar包
+  
+  这里需要引入腾讯的官方SDK jar包，你可以点击这里下载 [qq sdk jar 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)
