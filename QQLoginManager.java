@@ -1,5 +1,3 @@
-package com.example.qqlogin.manager;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
