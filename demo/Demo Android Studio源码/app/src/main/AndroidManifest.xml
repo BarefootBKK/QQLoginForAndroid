@@ -32,7 +32,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- 这地方需要用你在开放平台申请的appid:tencent+appid -->
-                <data android:scheme="tencent1108103648" />
+                <data android:scheme="tencent00000000" />
             </intent-filter>
         </activity>
         <activity
