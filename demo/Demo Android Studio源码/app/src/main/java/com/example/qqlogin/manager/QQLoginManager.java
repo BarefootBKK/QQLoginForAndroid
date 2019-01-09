@@ -19,7 +19,7 @@ import org.json.JSONObject;
  * 用法：
  * 1.首先implements QQLoginManager.QQLoginListener
  *
- * 2.启用构造函数，这里需要传入3个参数：app_id，QQLoginListener和Context
+ * 2.实例化QQLoginManager，这里需要传入2个参数：app_id，Object
  *      示例：new QQLoginManager(你的app_id, this)
  *      这里的this，直接把当前Activity传过来就可以了
  *
