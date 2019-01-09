@@ -2,15 +2,15 @@
 
 
 
-## 项目说明
+# 项目说明
 
   本项目集成封装了QQ第三方登录，大大减少了开发者编写【调用QQ登录】功能的代码量
   
   
   
-## 引入本项目
+# 引入本项目
 
-  ### Step 1. 修改AndroidManifest文件
+  ## Step 1. 修改AndroidManifest文件
   
   
   **(1)** 将下列代码复制到 ```AndroidManifest.xml``` 文件的 ```<application></application>``` 中：
@@ -47,10 +47,10 @@
   
   
   
-  ### Step 2. 引入Jar包
+  ## Step 2. 引入Jar包
   
   
-  #### (1) 下载Jar包
+  ### (1) 下载Jar包
   
   
   你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  *(下载完成后只需要解压出里面 lib 文件夹里的 jar文件 即可)*
@@ -60,7 +60,7 @@
 
   
   
-  #### (2) 在项目里引入Jar包
+  ### (2) 在项目里引入Jar包
   
   
   这里给出一种引入Jar包的方法（其他方法也可以）
@@ -74,7 +74,7 @@
   
   
   
-  ### Step 3. 引入QQLoginManager.java文件
+  ## Step 3. 引入QQLoginManager.java文件
   
   
   下载本项目的 ```QQLoginManager.java``` 文件，将其复制到自己的安卓项目中即可
@@ -82,7 +82,7 @@
   
   
   
-  ### Step 4. 代码示例
+  ## Step 4. 代码示例
   
   下面的工作完成后，你可以直接在需要的地方（如点击某个按钮后）调用函数：```qqLoginManager.launchQQLogin()```，即可唤起QQ登录
   
