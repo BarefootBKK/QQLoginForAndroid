@@ -41,6 +41,7 @@
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   ```
   
+  
   ### 2. 引入Jar包
   
-  这里需要引入腾讯的官方SDK JAR包，你可以点击这里下载 [QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip) (下载完成后只需要解压出里面lib文件夹里的jar文件即可)
+  这里需要引入腾讯的官方 SDK JAR 包，你可以点击这里下载 [QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  *(下载完成后只需要解压出里面lib文件夹里的jar文件即可)*
