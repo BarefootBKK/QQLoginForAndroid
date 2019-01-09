@@ -65,7 +65,7 @@
   
   *(a)* 将下载好的jar包放到项目文件夹的 ```app\libs``` 文件夹下
 
-  *(b)* 在 *Android Studio* 中点击 ```File->Project Structure```，然后选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，然后选择 ```libs``` 文件夹里的 ```jar包``` 添加即可
+  *(b)* 在 *Android Studio* 中点击 ```File->Project Structure```，然后选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，然后选择上一步 ```libs``` 文件夹里的 ```jar包``` 添加即可
   
   
   
