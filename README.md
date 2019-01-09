@@ -49,10 +49,10 @@
   ***下载Jar包***
   
   
-  你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  *(下载完成后只需要解压出里面 lib 文件夹里的 jar文件 即可)*
+  > 你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  *(下载完成后只需要解压出里面 lib 文件夹里的 jar文件 即可)*
 
 
-  也可以直接使用本项目 ```qq_sdk_jar文件夹``` 里的 ```jar包```  *(这个jar包为腾讯官方于为2018年5月更新的版本，你也可以点击这里查看 [最新官方SDK包版本](http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD) )*
+  > 也可以直接使用本项目 ```qq_sdk_jar文件夹``` 里的 ```jar包```  *(这个jar包为腾讯官方于为2018年5月更新的版本，你也可以点击这里查看 [最新官方SDK包版本](http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD) )*
 
   
   
@@ -63,9 +63,9 @@
   
   以*Android Studio*为例：
   
-  *(a)* 将下载好的jar包放到项目文件夹的 ```app\libs``` 文件夹下
+  > *(a)* 将下载好的jar包放到项目文件夹的 ```app\libs``` 文件夹下
 
-  *(b)* 在 *Android Studio* 中点击 ```File->Project Structure```，然后选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，然后选择上一步 ```libs``` 文件夹里的 ```jar包``` 添加即可
+  > *(b)* 在 *Android Studio* 中点击 ```File->Project Structure```，然后选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，然后选择上一步 ```libs``` 文件夹里的 ```jar包``` 添加即可
   
   
   
@@ -80,7 +80,7 @@
   
   ## Step 4. 代码示例
   
-  > 按照下列示例代码，模仿其添加到自己的Activity类中，之后你就可以直接在需要的地方（如点击某个按钮后）调用函
+  按照下列示例代码，模仿其添加到自己的Activity类中，之后你就可以直接在需要的地方（如点击某个按钮后）调用函
   数：```qqLoginManager.launchQQLogin()```，即可唤起QQ登录
   
   ```
