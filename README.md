@@ -34,7 +34,7 @@
   ```
   
   
-  **(2)** 添加网络权限
+  **(2)** 添加网络权限*(放在<application></application>外)*
   
   ```
   <uses-permission android:name="android.permission.INTERNET" />
