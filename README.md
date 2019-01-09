@@ -53,14 +53,10 @@
   #### (1) 下载Jar包
   
   
-  你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)
-  
-  *(下载完成后只需要解压出里面 lib 文件夹里的 jar文件 即可)*
+  你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  *(下载完成后只需要解压出里面 lib 文件夹里的 jar文件 即可)*
 
 
-  也可以直接使用本项目 ```qq_sdk_jar文件夹``` 里的 ```jar包```
-  
-  *(这个jar包为腾讯官方于为2018年5月更新的版本，你也可以点击这里查看 [最新官方SDK包版本](http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD) )*
+  也可以直接使用本项目 ```qq_sdk_jar文件夹``` 里的 ```jar包```  *(这个jar包为腾讯官方于为2018年5月更新的版本，你也可以点击这里查看 [最新官方SDK包版本](http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD) )*
 
   
   
@@ -77,7 +73,52 @@
   
   
   
+  
   ### Step 3. 引入QQLoginManager.java文件
   
   
   下载本项目的 ```QQLoginManager.java``` 文件，将其复制到自己的安卓项目中即可
+  
+  
+  
+  
+  ### Step 4. 代码示例
+  
+  ```
+  public class MainActivity extends AppCompatActivity implements QQLoginManager.QQLoginListener {
+
+      private QQLoginManager qqLoginManager;
+
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          setContentView(R.layout.activity_main);
+          // 实例QQLoginManager, 化传入你的app_id
+          qqLoginManager = new QQLoginManager("", this);
+      }
+
+      @Override
+      protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+          // 回调
+          qqLoginManager.onActivityResultData(requestCode, resultCode, data);
+      }
+
+      @Override
+      public void onQQLoginSuccess(JSONObject jsonObject) {
+          // 登录成功
+      }
+
+      /**
+       * 
+       */
+      @Override
+      public void onQQLoginCancel() {
+          // 登录取消
+      }
+
+      @Override
+      public void onQQLoginError(UiError uiError) {
+          // 登录出错
+      }
+  }
+  ```
