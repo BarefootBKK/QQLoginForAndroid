@@ -56,7 +56,7 @@
 
   
   
- ***(2) 在项目里引入Jar包***
+ ***在项目里引入Jar包***
   
   
   这里给出一种引入Jar包的方法（其他方法也可以）
@@ -73,7 +73,7 @@
   ## Step 3. 引入QQLoginManager.java文件
   
   
-  下载本项目的 ```QQLoginManager.java``` 文件，将其复制到自己的安卓项目中即可
+  下载本项目的 ```QQLoginManager.java``` 文件，将其复制到自己的安卓项目中
   
   
   
