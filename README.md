@@ -6,7 +6,36 @@
   
 # 引入本项目
 
-  ## Step 1. 修改AndroidManifest文件
+  
+  
+  
+  ## Step 1. 引入SDK Jar包
+  
+  
+  ***下载Jar包***
+  
+  
+  你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  *(下载完成后只需要解压出里面 libs 文件夹里的 jar文件 即可)*
+
+
+  也可以直接使用本项目 ```qq_sdk_jar文件夹``` 里的 ```jar包```  *(这个jar包为腾讯官方于为2018年5月更新的版本，你也可以点击这里查看 [最新官方SDK包版本](http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD) )*
+
+  
+  
+ ***在项目里引入Jar包***
+  
+  
+  这里给出一种引入Jar包的方法（其他方法也可以）
+  
+  以*Android Studio*为例：
+  
+  > 将下载好的jar包放到你的安卓项目的 ```app\libs``` 文件夹下
+
+  > 在 *Android Studio* 中点击 ```File->Project Structure```，然后选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，然后选择上一步 ```libs``` 文件夹里的 ```jar包``` 添加即可
+  
+  
+
+  ## Step 2. 修改AndroidManifest文件
   
   
   **(1)** 将下列代码复制到 ```AndroidManifest.xml``` 文件的 ```<application></application>``` 中
@@ -41,34 +70,6 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   ```
-  
-  
-  
-  ## Step 2. 引入Jar包
-  
-  
-  ***下载Jar包***
-  
-  
-  你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  *(下载完成后只需要解压出里面 libs 文件夹里的 jar文件 即可)*
-
-
-  也可以直接使用本项目 ```qq_sdk_jar文件夹``` 里的 ```jar包```  *(这个jar包为腾讯官方于为2018年5月更新的版本，你也可以点击这里查看 [最新官方SDK包版本](http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD) )*
-
-  
-  
- ***在项目里引入Jar包***
-  
-  
-  这里给出一种引入Jar包的方法（其他方法也可以）
-  
-  以*Android Studio*为例：
-  
-  > 将下载好的jar包放到你的安卓项目的 ```app\libs``` 文件夹下
-
-  > 在 *Android Studio* 中点击 ```File->Project Structure```，然后选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，然后选择上一步 ```libs``` 文件夹里的 ```jar包``` 添加即可
-  
-  
   
   
   ## Step 3. 引入QQLoginManager.java文件
