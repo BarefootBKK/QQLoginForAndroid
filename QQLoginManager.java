@@ -28,7 +28,7 @@ import org.json.JSONObject;
  */
 /**
  * @author BarefootBKK
- * 2019/1/19
+ * 2019/01/09
  */
 public class QQLoginManager {
     private String app_id = "";
