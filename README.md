@@ -75,4 +75,5 @@
   
   ### Step 3. 引入QQLoginManager.java文件
   
-  **下载本项目的QQLoginManager文件，将其复制到自己的安卓项目中即可**
+  
+  下载本项目的 ```QQLoginManager.java``` 文件，将其复制到自己的安卓项目中即可
