@@ -34,7 +34,7 @@
   ```
   
   
-  **(2)** 添加网络权限*(放在<application></application>外)*
+  **(2)** 添加网络权限
   
   ```
   <uses-permission android:name="android.permission.INTERNET" />
@@ -80,7 +80,8 @@
   
   ## Step 4. 代码示例
   
-  按照下列示例代码，模仿其添加到自己的Activity类中，之后你就可以直接在需要的地方（如点击某个按钮后）调用函数：```qqLoginManager.launchQQLogin()```，即可唤起QQ登录
+  按照下列示例代码，模仿其添加到自己的Activity类中，之后你就可以直接在需要的地方（如点击某个按钮后）调用函
+  数：```qqLoginManager.launchQQLogin()```，即可唤起QQ登录
   
   ```
   public class MainActivity extends AppCompatActivity implements QQLoginManager.QQLoginListener {
