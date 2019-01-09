@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements QQLoginManager.QQ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        qqLoginManager = new QQLoginManager("1108103648", this);
+        qqLoginManager = new QQLoginManager("app_id", this);
         ToastUtil.initToast(this);
 
         qqImageView = findViewById(R.id.main_qq_img);
