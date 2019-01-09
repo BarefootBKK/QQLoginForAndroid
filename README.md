@@ -9,7 +9,8 @@
 
   ### 1. 修改AndroidManifest文件
   
-  **(1)** 将下列代码复制到```AndroidManifest.xml```文件的 ```<application></application>``` 中：
+  
+  **(1)** 将下列代码复制到 ```AndroidManifest.xml``` 文件的 ```<application></application>``` 中：
     
   ```
     <activity
