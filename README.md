@@ -9,7 +9,7 @@
 
   ### 1. 修改AndroidManifest文件
   
-  将下列代码复制到**AndroidManifest.xml**文件的 <application></application> 中：
+  **(1)** 将下列代码复制到**AndroidManifest.xml**文件的 <application></application> 中：
     
   ```
     <!-- QQ登录开始 -->
@@ -34,3 +34,12 @@
         android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     <!-- QQ登录结束 -->
   ```
+  
+  **(2)** 添加网络权限
+  
+  ```
+  <!-- 获取网络权限 -->
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  ```
+  
