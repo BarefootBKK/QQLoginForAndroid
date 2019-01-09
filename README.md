@@ -84,6 +84,8 @@
   
   ### Step 4. 代码示例
   
+  下面的工作完成后，你可以直接在需要的地方（如点击某个按钮后）调用函数：```qqLoginManager.launchQQLogin()```，即可唤起QQ登录
+  
   ```
   public class MainActivity extends AppCompatActivity implements QQLoginManager.QQLoginListener {
 
@@ -119,5 +121,3 @@
       }
   }
   ```
-  
-  上面的工作完成后，你可以直接在需要的地方（如点击某个按钮后）调用函数：```qqLoginManager.launchQQLogin()```，即可唤起QQ登录
