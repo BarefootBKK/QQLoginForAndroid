@@ -121,7 +121,7 @@
   ```
   
   
-  ## 补充说明（登录成功函数onQQLoginSuccess：JSONObject里QQ用户信息字段格式）
+  ## 补充说明（函数onQQLoginSuccess：JSONObject里QQ用户信息字段格式）
   ```
   {
     "nickname":昵称,
