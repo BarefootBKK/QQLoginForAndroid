@@ -11,7 +11,7 @@
   
   将下列代码复制到**AndroidManifest.xml**文件的 <application></application> 中：
     
-  `
+  ```
     <!-- QQ登录开始 -->
     <activity
         android:name="com.tencent.tauth.AuthActivity"
@@ -33,4 +33,4 @@
         android:screenOrientation="behind"
         android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     <!-- QQ登录结束 -->
-  `
+  ```
