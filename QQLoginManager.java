@@ -19,7 +19,7 @@ import org.json.JSONObject;
  *
  * 2.实例化QQLoginManager，这里需要传入2个参数：app_id，Object
  *      示例：new QQLoginManager(你的app_id, this)
- *      这里的this，直接把当前Activity传过来就可以了
+ *      这里的this，直接把当前Activity对象传过来就可以了
  *
  * 3.在onActivityResult()方法里回调登录结果，调用onActivityResultData(...)方法
  *
