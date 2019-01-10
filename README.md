@@ -15,7 +15,7 @@
   ***下载Jar包***
   
   
-  你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  *(下载完成后只需要解压出里面 libs 文件夹里的 jar文件 即可)*
+  你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  *(下载完成后只需要解压出 libs 文件夹里的 jar文件 即可)*
 
 
   也可以直接使用本项目 ```qq_sdk_jar```文件夹里的 ```jar包```([点击直接下载](https://raw.githubusercontent.com/BarefootBKK/QQLoginForAndroid/master/qq_sdk_jar/open_sdk_r6008_lite.jar))  *(这个jar包为腾讯官方于为2018年5月更新的版本，你也可以点击这里查看 [最新官方SDK包版本](http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD) )*
@@ -31,7 +31,7 @@
   
   > 将下载好的jar包放到你的安卓项目的 ```app\libs``` 文件夹下
 
-  > 在 *Android Studio* 中点击 ```File->Project Structure```，然后选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，然后选择上一步 ```libs``` 文件夹里的 ```jar包``` 添加即可
+  > 在 *Android Studio* 中点击 ```File->Project Structure```，接下来选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，最后选择上一步 ```libs``` 文件夹里的 ```jar包``` 添加即可
   
   
 
