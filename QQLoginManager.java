@@ -21,10 +21,10 @@ import org.json.JSONObject;
  *      示例：new QQLoginManager(你的app_id, this)
  *      这里的this，直接把当前Activity传过来就可以了
  *
- * 3.然后需要在onActivityResult()方法里注册监听器，onActivityResultData(...)方法
+ * 3.在onActivityResult()方法里回调登录结果，调用onActivityResultData(...)方法
  *
- * 4.然后就可以调用QQ登录函数了：launchQQLogin()，
- *  在重载的三个方法(onQQLoginSuccess(...)等)里执行你的操作吧
+ * 4.最后调用QQ登录函数：launchQQLogin()，
+ *  在重载的三个方法(onQQLoginSuccess(...)等)里执行你的操作
  */
 /**
  * @author BarefootBKK
