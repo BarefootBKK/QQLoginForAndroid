@@ -145,7 +145,7 @@
   
   ### APP_ID相关
   
-  1. **APP_ID**需要在申请成为 [腾讯开放平台开发者] (http://open.qq.com/reg)后，
+  1. **APP_ID**需要在申请成为 [腾讯开放平台开发者](http://open.qq.com/reg) 后，
   【**新建应用**】获取
   
   2. **一个APP_ID只能应用于一个APP**，如果出现无法登录的情况，可能是因为当前APP_ID已经在其他APP中使用过了，这时需要在 [腾讯开放平台](http://op.open.qq.com/manage_centerv2) 新建一个应用，使用新的APP_ID
