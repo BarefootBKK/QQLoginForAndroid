@@ -120,7 +120,8 @@
   ```
   
   
-  ## 补充说明（函数onQQLoginSuccess：JSONObject里QQ用户信息json格式）
+  ## 补充说明
+  ### 函数onQQLoginSuccess：JSONObject里QQ用户信息json格式
   ```
   {
     "nickname":昵称,
@@ -141,3 +142,8 @@
     "is_yellow_year_vip":是否为黄钻年会员
   }
   ```
+  
+  ### APP_ID相关
+  **1. APP_ID需要在申请成为腾讯开放平台开发者后，【新建应用】获取**
+  
+  **2. 一个APP_ID只能应用于一个APP，如果出现无法登录的情况，可能是因为当前APP_ID已经在其他APP中使用过了，这时需要在腾讯开发平台新建一个应用，使用新的APP_ID
