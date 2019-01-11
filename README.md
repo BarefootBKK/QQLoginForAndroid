@@ -144,6 +144,13 @@
   }
   ```
   
+  ### 函数onQQLoginError：UiError类参数详情
+  ```
+  int errorCode: 错误码，具体错误码请参考腾讯官方API文档
+  String errorDetail: 错误详情
+  String errorMessage: 错误信息
+  ```
+  
   ### APP_ID相关
   
   > **APP_ID**需要在申请成为 [腾讯开放平台开发者](http://open.qq.com/reg) 后，
