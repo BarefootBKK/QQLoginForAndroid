@@ -124,6 +124,7 @@
   ### 函数onQQLoginSuccess：JSONObject里QQ用户信息json格式
   ```
   {
+    "open_id":当前登录QQ唯一标识,
     "nickname":昵称,
     "gender":性别,
     "province":所在省份,
