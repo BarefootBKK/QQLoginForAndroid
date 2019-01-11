@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQToken;
@@ -21,7 +22,7 @@ import org.json.JSONObject;
  *
  * 2.实例化QQLoginManager，这里需要传入2个参数：app_id，Object
  *      示例：new QQLoginManager(你的app_id, this)
- *      这里的this，直接把当前Activity传过来就可以了
+ *      这里的this，直接把当前Activity对象传过来就可以了
  *
  * 3.在onActivityResult()方法里回调登录结果，调用onActivityResultData(...)方法
  *
@@ -30,9 +31,10 @@ import org.json.JSONObject;
  */
 /**
  * @author BarefootBKK
- * 2019/1/19
+ * 2019/01/09
  */
 public class QQLoginManager {
+
     private String app_id = "";
     private Tencent mTencent;
     private UserInfo mUserInfo;
@@ -108,6 +110,9 @@ public class QQLoginManager {
      * 本地QQ登录监听器
      */
     private class LocalLoginListener implements IUiListener {
+
+        private String openID;
+
         @Override
         public void onComplete(Object o) {
             initOpenIdAndToken(o);
@@ -116,12 +121,12 @@ public class QQLoginManager {
 
         @Override
         public void onError(UiError uiError) {
-
+            qqLoginListener.onQQLoginError(uiError);
         }
 
         @Override
         public void onCancel() {
-
+            qqLoginListener.onQQLoginCancel();
         }
 
         /**
@@ -131,13 +136,13 @@ public class QQLoginManager {
         private void initOpenIdAndToken(Object object) {
             JSONObject jsonObject = (JSONObject) object;
             try {
-                String openID = jsonObject.getString("openid");
+                openID = jsonObject.getString("openid");
                 String access_token = jsonObject.getString("access_token");
                 String expires = jsonObject.getString("expires_in");
                 mTencent.setOpenId(openID);
                 mTencent.setAccessToken(access_token, expires);
             } catch (JSONException e) {
-
+                qqLoginListener.onQQLoginError(null);
             }
         }
 
@@ -154,7 +159,13 @@ public class QQLoginManager {
                  */
                 @Override
                 public void onComplete(Object o) {
-                    qqLoginListener.onQQLoginSuccess((JSONObject) o);
+                    try {
+                        JSONObject jsonObject = (JSONObject) o;
+                        jsonObject.put("open_id", openID);
+                        qqLoginListener.onQQLoginSuccess(jsonObject);
+                    } catch (JSONException e) {
+                        qqLoginListener.onQQLoginError(null);
+                    }
                 }
 
                 /**
