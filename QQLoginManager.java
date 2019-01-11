@@ -2,7 +2,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQToken;
