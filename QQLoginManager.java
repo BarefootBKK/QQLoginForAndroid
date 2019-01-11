@@ -2,6 +2,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQToken;
@@ -40,7 +41,7 @@ public class QQLoginManager {
     private Activity mActivity;
 
     /**
-     * 构造函数
+     * 构造函数，包括app_id
      * @param app_id
      * @param o
      */
@@ -106,27 +107,27 @@ public class QQLoginManager {
      * 本地QQ登录监听器
      */
     private class LocalLoginListener implements IUiListener {
+        private String openID;
+
         @Override
         public void onComplete(Object o) {
-            initOpenIdAndToken(o);
-            loadUserInfo();
+            loadUserInfo(o);
         }
 
         @Override
         public void onError(UiError uiError) {
-
+            qqLoginListener.onQQLoginError(uiError);
         }
 
         @Override
         public void onCancel() {
-
+            qqLoginListener.onQQLoginCancel();
         }
 
         /**
-         * 初始化openID和access_token
-         * @param object
+         * 加载用户信息
          */
-        private void initOpenIdAndToken(Object object) {
+        private void loadUserInfo(Object object) {
             JSONObject jsonObject = (JSONObject) object;
             try {
                 String openID = jsonObject.getString("openid");
@@ -135,14 +136,8 @@ public class QQLoginManager {
                 mTencent.setOpenId(openID);
                 mTencent.setAccessToken(access_token, expires);
             } catch (JSONException e) {
-
+                qqLoginListener.onQQLoginError(null);
             }
-        }
-
-        /**
-         * 加载用户信息
-         */
-        private void loadUserInfo() {
             QQToken qqToken = mTencent.getQQToken();
             mUserInfo = new UserInfo(mContext, qqToken);
             mUserInfo.getUserInfo(new IUiListener() {
@@ -152,7 +147,13 @@ public class QQLoginManager {
                  */
                 @Override
                 public void onComplete(Object o) {
-                    qqLoginListener.onQQLoginSuccess((JSONObject) o);
+                    try {
+                        JSONObject jsonObject = (JSONObject) o;
+                        jsonObject.put("open_id", openID);
+                        qqLoginListener.onQQLoginSuccess(jsonObject);
+                    } catch (JSONException e) {
+                        qqLoginListener.onQQLoginError(null);
+                    }
                 }
 
                 /**
