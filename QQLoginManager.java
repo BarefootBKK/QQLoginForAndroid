@@ -139,7 +139,7 @@ public class QQLoginManager {
                 mTencent.setOpenId(openID);
                 mTencent.setAccessToken(access_token, expires);
             } catch (JSONException e) {
-                qqLoginListener.onQQLoginError(null);
+                qqLoginListener.onQQLoginError(new UiError(-99999, e.toString(), "初始化OpenId和Token失败"));
             }
         }
 
@@ -161,7 +161,7 @@ public class QQLoginManager {
                         jsonObject.put("open_id", openID);
                         qqLoginListener.onQQLoginSuccess(jsonObject);
                     } catch (JSONException e) {
-                        qqLoginListener.onQQLoginError(null);
+                        qqLoginListener.onQQLoginError(new UiError(-99999, e.toString(), "获取OpenId异常"));
                     }
                 }
 
