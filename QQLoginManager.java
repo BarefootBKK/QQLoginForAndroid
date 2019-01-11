@@ -1,3 +1,5 @@
+package com.example.qqlogin.manager;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,6 +34,7 @@ import org.json.JSONObject;
  * 2019/01/09
  */
 public class QQLoginManager {
+
     private String app_id = "";
     private Tencent mTencent;
     private UserInfo mUserInfo;
@@ -107,11 +110,13 @@ public class QQLoginManager {
      * 本地QQ登录监听器
      */
     private class LocalLoginListener implements IUiListener {
+
         private String openID;
 
         @Override
         public void onComplete(Object o) {
-            loadUserInfo(o);
+            initOpenIdAndToken(o);
+            loadUserInfo();
         }
 
         @Override
@@ -125,12 +130,13 @@ public class QQLoginManager {
         }
 
         /**
-         * 加载用户信息
+         * 初始化openID和access_token
+         * @param object
          */
-        private void loadUserInfo(Object object) {
+        private void initOpenIdAndToken(Object object) {
             JSONObject jsonObject = (JSONObject) object;
             try {
-                String openID = jsonObject.getString("openid");
+                openID = jsonObject.getString("openid");
                 String access_token = jsonObject.getString("access_token");
                 String expires = jsonObject.getString("expires_in");
                 mTencent.setOpenId(openID);
@@ -138,6 +144,12 @@ public class QQLoginManager {
             } catch (JSONException e) {
                 qqLoginListener.onQQLoginError(null);
             }
+        }
+
+        /**
+         * 加载用户信息
+         */
+        private void loadUserInfo() {
             QQToken qqToken = mTencent.getQQToken();
             mUserInfo = new UserInfo(mContext, qqToken);
             mUserInfo.getUserInfo(new IUiListener() {
