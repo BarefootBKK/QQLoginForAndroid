@@ -81,7 +81,7 @@
   
   ## Step 4. 代码示例
   
-  按照下列示例代码，模仿其添加到自己的Activity类中，之后你就可以在需要的地方（如点击某个按钮后）调用函数：```launchQQLogin()```(如示例代码的：```qqLoginManager.launchQQLogin()```)，即可唤起QQ登录
+  按照下列示例代码，模仿其添加到自己的Activity类中，之后你就可以在需要的地方（如点击某个按钮后）调用函数：```launchQQLogin()``` (如示例代码中：```qqLoginManager.launchQQLogin()``` )，即可唤起QQ登录
   
   ```
   public class MainActivity extends AppCompatActivity implements QQLoginManager.QQLoginListener {
