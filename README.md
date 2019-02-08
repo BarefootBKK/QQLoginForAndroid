@@ -22,7 +22,7 @@
 
   
   
- ***在项目里引入Jar包***
+ - ***在项目里引入Jar包***
   
   
   这里给出一种引入Jar包的方法（其他方法也可以）
@@ -38,7 +38,7 @@
   ## Step 2. 修改AndroidManifest文件
   
   
-  **(1)** 将下列代码复制到 ```AndroidManifest.xml``` 文件的 ```<application></application>``` 中
+  - 将下列代码复制到 ```AndroidManifest.xml``` 文件的 ```<application></application>``` 中
   *(注意将代码里的app_id完善)*：
     
   ```
@@ -64,7 +64,7 @@
   ```
   
   
-  **(2)** 添加网络权限
+  - 添加网络权限
   
   ```
   <uses-permission android:name="android.permission.INTERNET" />
@@ -153,7 +153,7 @@
   
   ### APP_ID相关
   
-  > **APP_ID**需要在申请成为 [腾讯开放平台开发者](http://open.qq.com/reg) 后，
+  - **APP_ID**需要在申请成为 [腾讯开放平台开发者](http://open.qq.com/reg) 后，
   【**新建应用**】获取
   
-  > **一个APP_ID只能应用于一个APP**，如果出现无法登录的情况，可能是因为当前APP_ID已经在其他APP中使用过了，这时需要在 [腾讯开放平台](http://op.open.qq.com/manage_centerv2) 新建一个应用，使用新的APP_ID
+  - **一个APP_ID只能应用于一个APP**，如果出现无法登录的情况，可能是因为当前APP_ID已经在其他APP中使用过了，这时需要在 [腾讯开放平台](http://op.open.qq.com/manage_centerv2) 新建一个应用，使用新的APP_ID
