@@ -12,7 +12,7 @@
   ## Step 1. 引入SDK JAR包
   
   
-  - 下载Jar包
+  - ***下载Jar包***
   
   
   你可以点击这里下载 [腾讯官方QQ-SDK-JAR 包](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/doc/Android_SDK_V3.3.3.zip)  *(下载完成后只需要解压出 libs 文件夹里的 jar文件 即可)*
