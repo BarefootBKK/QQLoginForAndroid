@@ -13,22 +13,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * 这是一个QQ登录的管理类
- * 用法：
- * 1.首先implements QQLoginManager.QQLoginListener
- *
- * 2.实例化QQLoginManager，这里需要传入2个参数：app_id，Object
- *      示例：new QQLoginManager(你的app_id, this)
- *      这里的this，直接把当前Activity对象传过来就可以了
- *
- * 3.在onActivityResult()方法里回调登录结果，调用onActivityResultData(...)方法
- *
- * 4.最后调用QQ登录函数：launchQQLogin()，
- *  在重载的三个方法(onQQLoginSuccess(...)等)里执行你的操作
- */
-/**
  * @author BarefootBKK
- * 2019/01/09
+ * 2019/03/12
  */
 public class QQLoginManager {
 
@@ -88,7 +74,7 @@ public class QQLoginManager {
     /**
      * 退出QQ登录
      */
-    public void qqLogout() {
+    public void logout() {
         if (mTencent.isSessionValid()) {
             mTencent.logout(mActivity);
         }
@@ -98,7 +84,7 @@ public class QQLoginManager {
      * QQ登录状态监听器
      */
     public interface QQLoginListener {
-        void onQQLoginSuccess(JSONObject jsonObject);
+        void onQQLoginSuccess(JSONObject jsonObject, UserAuthInfo authInfo);
         void onQQLoginCancel();
         void onQQLoginError(UiError uiError);
     }
@@ -109,6 +95,8 @@ public class QQLoginManager {
     private class LocalLoginListener implements IUiListener {
 
         private String openID;
+        private String accessToken;
+        private String expiresIn;
 
         @Override
         public void onComplete(Object o) {
@@ -134,10 +122,10 @@ public class QQLoginManager {
             JSONObject jsonObject = (JSONObject) object;
             try {
                 openID = jsonObject.getString("openid");
-                String access_token = jsonObject.getString("access_token");
-                String expires = jsonObject.getString("expires_in");
+                accessToken = jsonObject.getString("access_token");
+                expiresIn = jsonObject.getString("expires_in");
                 mTencent.setOpenId(openID);
-                mTencent.setAccessToken(access_token, expires);
+                mTencent.setAccessToken(accessToken, expiresIn);
             } catch (JSONException e) {
                 qqLoginListener.onQQLoginError(new UiError(-99999, e.toString(), "初始化OpenId和Token失败"));
             }
@@ -159,7 +147,9 @@ public class QQLoginManager {
                     try {
                         JSONObject jsonObject = (JSONObject) o;
                         jsonObject.put("open_id", openID);
-                        qqLoginListener.onQQLoginSuccess(jsonObject);
+                        jsonObject.put("access_token", accessToken);
+                        jsonObject.put("expires_in", expiresIn);
+                        qqLoginListener.onQQLoginSuccess(jsonObject, new UserAuthInfo(openID, accessToken, expiresIn));
                     } catch (JSONException e) {
                         qqLoginListener.onQQLoginError(new UiError(-99999, e.toString(), "获取OpenId异常"));
                     }
@@ -182,6 +172,18 @@ public class QQLoginManager {
                     qqLoginListener.onQQLoginCancel();
                 }
             });
+        }
+    }
+
+    public class UserAuthInfo {
+        public String openId;
+        public String accessToken;
+        public String expiresIn;
+
+        public UserAuthInfo(String openId, String accessToken, String expiresIn) {
+            this.openId = openId;
+            this.accessToken = accessToken;
+            this.expiresIn = expiresIn;
         }
     }
 }
