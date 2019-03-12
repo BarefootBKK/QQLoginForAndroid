@@ -103,7 +103,7 @@
       }
 
       @Override
-      public void onQQLoginSuccess(JSONObject jsonObject) {
+      public void onQQLoginSuccess(JSONObject jsonObject, QQLoginManager.UserAuthInfo authInfo) {
           // 登录成功
       }
 
