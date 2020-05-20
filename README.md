@@ -132,11 +132,11 @@ loginManager.login(true);
 ### 检查登录状态
 ```
 loginManager.checkLogin(new QQLoginManager.QQCheckCallback() {
-  @Override
-  public void onCallback(boolean login, JSONObject json) {
-      // login=true：已登录；json=用户信息
-      // login=false：未登录或登录已失效；json=检查详情
-  }
+    @Override
+    public void onCallback(boolean login, JSONObject json) {
+        // login=true：已登录；json=用户信息
+        // login=false：未登录或登录已失效；json=检查详情
+    }
 });
 ```
   
