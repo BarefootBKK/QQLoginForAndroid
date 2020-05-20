@@ -36,11 +36,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.btn_main_activity_check:
+                    showMsg("正在检查登录状态...");
                     loginManager.checkLogin(new QQLoginManager.QQCheckCallback() {
                         @Override
-                        public void onCallback(boolean login, String msg) {
-                            Log.d(TAG, "onCheckCallback: login=" + login + "  msg=" + msg);
-                            showMsg("检查登录状态结果: （true代表已登录，false代表未登录）\nlogin=" + login + "  msg=" + msg);
+                        public void onCallback(boolean login, JSONObject json) {
+                            Log.d(TAG, "onCheckCallback: login=" + login + "  msg=" + json.toString());
+                            showMsg("检查登录状态结果: （true代表已登录，false代表未登录）\nlogin = " + login + "\nmsg = " + json.toString());
 
                             if (login) {
                                 btnLogin.setText("退出登录");

@@ -65,30 +65,7 @@ public class QQLoginManager {
             public void onComplete(Object o) {
                 setLoginResult((JSONObject) o);
                 saveLoginInfo(getOpenId(), getAccessToken(), getExpiresIn());
-
-                UserInfo userInfo = new UserInfo(activity.getApplicationContext(), getQQToken());
-                userInfo.getUserInfo(new IUiListener() {
-                    @Override
-                    public void onComplete(Object o) {
-                        if (null != qqLoginListener) {
-                            qqLoginListener.onQQLoginSuccess((JSONObject) o);
-                        }
-                    }
-
-                    @Override
-                    public void onError(UiError uiError) {
-                        if (null != qqLoginListener) {
-                            qqLoginListener.onQQLoginError(uiError);
-                        }
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        if (null != qqLoginListener) {
-                            qqLoginListener.onQQLoginCancel();
-                        }
-                    }
-                });
+                callbackUserInfo(qqLoginListener);
             }
 
             @Override
@@ -105,6 +82,49 @@ public class QQLoginManager {
                 }
             }
         };
+    }
+
+    private void callbackUserInfo(QQLoginListener qqLoginListener) {
+        callbackUserInfo(qqLoginListener, null);
+    }
+
+    private void callbackUserInfo(QQCheckCallback checkCallback) {
+        callbackUserInfo(null, checkCallback);
+    }
+
+    private void callbackUserInfo(final QQLoginListener qqLoginListener, final QQCheckCallback checkCallback) {
+        UserInfo userInfo = new UserInfo(activity.getApplicationContext(), getQQToken());
+        userInfo.getUserInfo(new IUiListener() {
+            @Override
+            public void onComplete(Object o) {
+                if (null != qqLoginListener) {
+                    qqLoginListener.onQQLoginSuccess((JSONObject) o);
+                }
+                if (null != checkCallback) {
+                    checkCallback.onCallback(true, (JSONObject) o);
+                }
+            }
+
+            @Override
+            public void onError(UiError uiError) {
+                if (null != qqLoginListener) {
+                    qqLoginListener.onQQLoginError(uiError);
+                }
+                if (null != checkCallback) {
+                    checkCallback.onError(uiError.toString());
+                }
+            }
+
+            @Override
+            public void onCancel() {
+                if (null != qqLoginListener) {
+                    qqLoginListener.onQQLoginCancel();
+                }
+                if (null != checkCallback) {
+                    checkCallback.onCancel();
+                }
+            }
+        });
     }
 
     private String getJsonStringValue(String key, JSONObject json, String def) {
@@ -198,7 +218,11 @@ public class QQLoginManager {
             public void onComplete(Object o) {
                 Integer result = getJsonIntegerValue("ret", (JSONObject) o, null);
                 if (null != result) {
-                    callback.onCallback(result == 0, getJsonStringValue("msg", (JSONObject) o, ""));
+                    if (result != 0) {
+                        callback.onCallback(false, (JSONObject) o);
+                    } else {
+                        callbackUserInfo(callback);
+                    }
                 } else {
                     callback.onError("Json解析出错");
                 }
@@ -248,7 +272,7 @@ public class QQLoginManager {
     }
 
     public static abstract class QQCheckCallback {
-        public abstract void onCallback(boolean login, String msg);
+        public abstract void onCallback(boolean login, JSONObject json);
         public void onError(String error) {}
         public void onCancel() {}
     }
