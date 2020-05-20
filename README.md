@@ -81,42 +81,55 @@
   
   ## Step 4. 代码示例
   
-  按照下列示例代码，模仿其添加到自己的Activity类中，之后你就可以在需要的地方（如点击某个按钮后）调用函数：```launchQQLogin()``` (如：```qqLoginManager.launchQQLogin()```)，即可唤起QQ登录
+  按照下列示例代码，模仿其添加到自己的Activity类中，之后你就可以在需要的地方（如点击某个按钮后）调用函数：```login()``` (如：```qqLoginManager.login()```)，即可唤起QQ登录
   
   ```
-  public class MainActivity extends AppCompatActivity implements QQLoginManager.QQLoginListener {
+  public class MainActivity extends AppCompatActivity {
+    private QQLoginManager loginManager;
 
-      private QQLoginManager qqLoginManager;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-      @Override
-      protected void onCreate(Bundle savedInstanceState) {
-          super.onCreate(savedInstanceState);
-          setContentView(R.layout.activity_main);
-          // 实例化QQLoginManager, 传入你的app_id
-          qqLoginManager = new QQLoginManager("app_id", this);
-      }
+        loginManager = new QQLoginManager(this, "1110529440");
+        loginManager.setQQLoginListener(new QQLoginManager.QQLoginListener() {
+            @Override
+            public void onQQLoginSuccess(JSONObject jsonObject) {
+                // 登录成功
+            }
 
-      @Override
-      protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-          // 回调
-          qqLoginManager.onActivityResultData(requestCode, resultCode, data);
-      }
+            @Override
+            public void onQQLoginCancel() {
+                // 登录取消
+            }
 
-      @Override
-      public void onQQLoginSuccess(JSONObject jsonObject, QQLoginManager.UserAuthInfo authInfo) {
-          // 登录成功
-      }
+            @Override
+            public void onQQLoginError(UiError uiError) {
+                // 登录出错
+            }
+        });
+        
+        Button btnLogin = findViewById(R.id.btn_main_activity_login);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 登录1：如果用户已登录，则不会拉起QQ登录
+                // loginManager.login();
 
-      @Override
-      public void onQQLoginCancel() {
-          // 登录取消
-      }
+                // 登录2：无论用户是否已登录，都会强制拉起QQ登录
+                loginManager.login(true);
+            }
+        });
+    }
 
-      @Override
-      public void onQQLoginError(UiError uiError) {
-          // 登录出错
-      }
-  }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // 回调
+        loginManager.onActivityResultData(requestCode, resultCode, data);
+    }
+}
   ```
   
   
