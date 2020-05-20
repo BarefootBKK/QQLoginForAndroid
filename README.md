@@ -132,6 +132,26 @@
 }
   ```
   
+  ### 登录
+```
+// 登录1：如果用户已登录，则不会拉起QQ登录
+// loginManager.login();
+
+// 登录2：无论用户是否已登录，都会强制拉起QQ登录
+loginManager.login(true);
+```
+
+### 检查登录状态
+```
+loginManager.checkLogin(new QQLoginManager.QQCheckCallback() {
+@Override
+public void onCallback(boolean login, JSONObject json) {
+      // login=true：已登录；json=用户信息
+      // login=false：未登录或登录已失效；json=检查详情
+  }
+});
+```
+  
   
   ## 补充说明
   ### 函数onQQLoginSuccess：JSONObject里QQ用户信息json格式
