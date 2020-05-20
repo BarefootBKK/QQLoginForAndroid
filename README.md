@@ -92,7 +92,7 @@
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loginManager = new QQLoginManager(this, "1110529440");
+        loginManager = new QQLoginManager(this, 你的appid);
         loginManager.setQQLoginListener(new QQLoginManager.QQLoginListener() {
             @Override
             public void onQQLoginSuccess(JSONObject jsonObject) {
