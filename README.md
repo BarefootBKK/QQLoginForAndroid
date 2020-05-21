@@ -136,6 +136,10 @@ QQLoginManager.checkLogin(new QQLoginManager.QQCheckCallback() {
         // login=false：未登录或登录已失效；json=检查详情
     }
 });
+```  
+  ### 退出登录
+```
+QQLoginManager.logout(activity);
 ```
   
   
