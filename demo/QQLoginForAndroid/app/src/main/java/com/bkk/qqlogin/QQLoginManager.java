@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQToken;
@@ -21,14 +20,25 @@ public class QQLoginManager {
     private final static String KEY_OPEN_ID = "qq_open_id";
     private final static String KEY_ACCESS_TOKEN = "qq_access_token";
     private final static String KEY_EXPIRES_IN = "qq_expires_in";
-    private final static String TAG = "MyLog";
 
-    private Activity activity;
-    private String appId = "";
+    private Context context;
     private Tencent tencent;
+    private String appId = "";
     private IUiListener requestListener;
     private QQLoginListener qqLoginListener;
+
     private static SharedPreferences loginInfoSP;
+    private static QQLoginManager qqLoginManagerSingleton;
+
+    public static void init(Context context, String appId) {
+        if (null == qqLoginManagerSingleton) {
+            qqLoginManagerSingleton = new QQLoginManager(context, appId);
+        }
+    }
+
+    public static QQLoginManager getInstance() {
+        return qqLoginManagerSingleton;
+    }
 
     public static String getLocalOpenId(Context context) {
         initSP(context);
@@ -45,21 +55,63 @@ public class QQLoginManager {
         return loginInfoSP.getLong(KEY_EXPIRES_IN, -1L);
     }
 
+    public static void clearLoginInfo() {
+        saveLoginInfo("", "", -1L);
+    }
+
+    public static void login(Activity activity) {
+        login(activity, false);
+    }
+
+    public static void login(Activity activity, boolean forceLaunch) {
+        qqLoginManagerSingleton.doLoginRequest(activity, forceLaunch);
+    }
+
+    public static void logout(Activity activity) {
+        qqLoginManagerSingleton.doLogoutRequest(activity);
+    }
+
+    public static void checkLogin(QQCheckCallback callback) {
+        Context context = qqLoginManagerSingleton.context;
+        checkLogin(getLocalOpenId(context), getLocalAccessToken(context), getLocalExpiresIn(context), callback);
+    }
+
+    public static void checkLogin(String openId, String accessToken, long expiresIn,
+                                  QQCheckCallback callback) {
+        qqLoginManagerSingleton.doCheckLoginRequest(openId, accessToken, expiresIn, callback);
+    }
+
+    public static void setQQLoginListener(QQLoginListener qqLoginListener) {
+        qqLoginManagerSingleton.qqLoginListener = qqLoginListener;
+    }
+
+    public static void onActivityResultData(int requestCode, int resultCode, @Nullable Intent data) {
+        Tencent.onActivityResultData(requestCode, resultCode, data, qqLoginManagerSingleton.requestListener);
+    }
+
     private static void initSP(Context context) {
         if (null == loginInfoSP) {
             loginInfoSP = context.getApplicationContext().getSharedPreferences("QQLoginSP", Context.MODE_PRIVATE);
         }
     }
 
-    public QQLoginManager(Activity activity, String appId) {
-        this.activity = activity;
+    private static void saveLoginInfo(String openId, String accessToken, long expiresIn) {
+        SharedPreferences.Editor editor = loginInfoSP.edit();
+        editor.putString(KEY_OPEN_ID, openId);
+        editor.putString(KEY_ACCESS_TOKEN, accessToken);
+        editor.putLong(KEY_EXPIRES_IN, expiresIn);
+        editor.apply();
+    }
+
+    private QQLoginManager(Context context, String appId) {
+        this.context = context.getApplicationContext();
         this.appId = appId;
         init();
     }
 
     private void init() {
-        initSP(activity.getApplicationContext());
-        tencent = Tencent.createInstance(appId, activity.getApplicationContext());
+        initSP(context);
+        tencent = Tencent.createInstance(appId, context);
         requestListener = new IUiListener() {
             @Override
             public void onComplete(Object o) {
@@ -93,7 +145,7 @@ public class QQLoginManager {
     }
 
     private void callbackUserInfo(final QQLoginListener qqLoginListener, final QQCheckCallback checkCallback) {
-        UserInfo userInfo = new UserInfo(activity.getApplicationContext(), getQQToken());
+        UserInfo userInfo = new UserInfo(context, getQQToken());
         userInfo.getUserInfo(new IUiListener() {
             @Override
             public void onComplete(Object o) {
@@ -159,57 +211,24 @@ public class QQLoginManager {
         }
     }
 
-    private void saveLoginInfo(String openId, String accessToken, long expiresIn) {
-        SharedPreferences.Editor editor = loginInfoSP.edit();
-        editor.putString(KEY_OPEN_ID, openId);
-        editor.putString(KEY_ACCESS_TOKEN, accessToken);
-        editor.putLong(KEY_EXPIRES_IN, expiresIn);
-        editor.apply();
+    private void doLoginRequest(Activity activity, boolean forcedLaunch) {
+        if (forcedLaunch) {
+            doLogoutRequest(activity);
+        }
+
+        if (!tencent.isSessionValid()) {
+            tencent.login(activity, "all", requestListener);
+        }
     }
 
-    private void clearLoginInfo() {
-        saveLoginInfo("", "", -1L);
+    private void doLogoutRequest(Activity activity) {
+        clearLoginInfo();
+        if (tencent.isSessionValid()) {
+            tencent.logout(activity.getApplicationContext());
+        }
     }
 
-    public void onActivityResultData(int requestCode, int resultCode, @Nullable Intent data) {
-        Tencent.onActivityResultData(requestCode, resultCode, data, requestListener);
-    }
-
-    public void setLoginResult(JSONObject json) {
-        String openId = getJsonStringValue("openid", json, "");
-        String accessToken = getJsonStringValue("access_token", json, "");
-        long expiresIn = getJsonLongValue("expires_time", json, -1L);
-
-        tencent.setOpenId(openId);
-        tencent.setAccessToken(accessToken, String.valueOf(expiresIn));
-    }
-
-    public String getAppId() {
-        return tencent.getAppId();
-    }
-
-    public String getAccessToken() {
-        return tencent.getAccessToken();
-    }
-
-    public String getOpenId() {
-        return tencent.getOpenId();
-    }
-
-    public long getExpiresIn() {
-        return tencent.getExpiresIn();
-    }
-
-    public QQToken getQQToken() {
-        return tencent.getQQToken();
-    }
-
-    public void checkLogin(QQCheckCallback callback) {
-        Context context = activity.getApplicationContext();
-        checkLogin(getLocalOpenId(context), getLocalAccessToken(context), getLocalExpiresIn(context), callback);
-    }
-
-    public void checkLogin(String openId, String accessToken, long expiresIn,
+    private void doCheckLoginRequest(String openId, String accessToken, long expiresIn,
                            final QQCheckCallback callback) {
         tencent.setOpenId(openId);
         tencent.setAccessToken(accessToken, String.valueOf(expiresIn));
@@ -240,29 +259,33 @@ public class QQLoginManager {
         });
     }
 
-    public void login() {
-        login(false);
+    public void setLoginResult(JSONObject json) {
+        String openId = getJsonStringValue("openid", json, "");
+        String accessToken = getJsonStringValue("access_token", json, "");
+        long expiresIn = getJsonLongValue("expires_time", json, -1L);
+
+        tencent.setOpenId(openId);
+        tencent.setAccessToken(accessToken, String.valueOf(expiresIn));
     }
 
-    public void login(boolean forcedLaunch) {
-        if (forcedLaunch) {
-            logout();
-        }
-
-        if (!tencent.isSessionValid()) {
-            tencent.login(activity, "all", requestListener);
-        }
+    public String getAppId() {
+        return tencent.getAppId();
     }
 
-    public void logout() {
-        clearLoginInfo();
-        if (tencent.isSessionValid()) {
-            tencent.logout(activity.getApplicationContext());
-        }
+    public String getAccessToken() {
+        return tencent.getAccessToken();
     }
 
-    public void setQQLoginListener(QQLoginListener qqLoginListener) {
-        this.qqLoginListener = qqLoginListener;
+    public String getOpenId() {
+        return tencent.getOpenId();
+    }
+
+    public long getExpiresIn() {
+        return tencent.getExpiresIn();
+    }
+
+    public QQToken getQQToken() {
+        return tencent.getQQToken();
     }
 
     public interface QQLoginListener {

@@ -12,7 +12,10 @@ import android.widget.TextView;
 
 import com.tencent.tauth.UiError;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "MyLog";
@@ -20,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btnLogin;
     private TextView tvMsg;
 
-    private QQLoginManager loginManager;
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -28,16 +30,16 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btn_main_activity_login:
                     if ("登录".equals(btnLogin.getText().toString())) {
                         showMsg("正在登录...");
-                        loginManager.login(true);
+                        QQLoginManager.login(MainActivity.this);
                     } else {
-                        loginManager.logout();
+                        QQLoginManager.logout(MainActivity.this);
                         btnLogin.setText("登录");
                         showMsg("您已退出登录");
                     }
                     break;
                 case R.id.btn_main_activity_check:
                     showMsg("正在检查登录状态...");
-                    loginManager.checkLogin(new QQLoginManager.QQCheckCallback() {
+                    QQLoginManager.checkLogin(new QQLoginManager.QQCheckCallback() {
                         @Override
                         public void onCallback(boolean login, JSONObject json) {
                             Log.d(TAG, "onCheckCallback: login=" + login + "  msg=" + json.toString());
@@ -60,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loginManager = new QQLoginManager(this, "1110529440");
-        loginManager.setQQLoginListener(new QQLoginManager.QQLoginListener() {
+        QQLoginManager.init(this, "1110529440");
+        QQLoginManager.setQQLoginListener(new QQLoginManager.QQLoginListener() {
             @Override
             public void onQQLoginSuccess(JSONObject jsonObject) {
                 showMsg(jsonObject.toString());
@@ -96,6 +98,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        loginManager.onActivityResultData(requestCode, resultCode, data);
+        QQLoginManager.onActivityResultData(requestCode, resultCode, data);
     }
 }
