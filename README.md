@@ -81,19 +81,17 @@
   
   ## Step 4. 代码示例
   
-  按照下列示例代码，模仿其添加到自己的Activity类中，之后你就可以在需要的地方（如点击某个按钮后）调用函数：```login()``` (如：```qqLoginManager.login()```)，即可唤起QQ登录
+  按照下列示例代码，模仿其添加到自己的Activity类中，之后你就可以在需要的地方（如点击某个按钮后）调用函数：```QQLoginManager.login(activity)```，即可唤起QQ登录
   
   ```
   public class MainActivity extends AppCompatActivity {
-    private QQLoginManager loginManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loginManager = new QQLoginManager(this, 你的appid);
-        loginManager.setQQLoginListener(new QQLoginManager.QQLoginListener() {
+        QQLoginManager.init(this, 你的appId);
+        QQLoginManager.setQQLoginListener.setQQLoginListener(new QQLoginManager.QQLoginListener() {
             @Override
             public void onQQLoginSuccess(JSONObject jsonObject) {
                 // 登录成功
@@ -115,7 +113,7 @@
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // 回调
-        loginManager.onActivityResultData(requestCode, resultCode, data);
+        QQLoginManager.onActivityResultData(requestCode, resultCode, data);
     }
 }
   ```
@@ -123,15 +121,15 @@
   ### 登录
 ```
 // 登录1：如果用户已登录，则不会拉起QQ登录
-loginManager.login();
+QQLoginManager.login(activity);
 
 // 登录2：无论用户是否已登录，都会强制拉起QQ登录
-loginManager.login(true);
+QQLoginManager.login(activity, true);
 ```
 
 ### 检查登录状态
 ```
-loginManager.checkLogin(new QQLoginManager.QQCheckCallback() {
+QQLoginManager.checkLogin(new QQLoginManager.QQCheckCallback() {
     @Override
     public void onCallback(boolean login, JSONObject json) {
         // login=true：已登录；json=用户信息
