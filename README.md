@@ -18,7 +18,7 @@
   你可以点击这里可以查看 [最新官方QQ-SDK包版本](http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD) *(下载完成后只需要解压出 libs 文件夹里的 jar文件 即可)*
 
 
- 也可以直接使用本项目 ```qq_sdk_jar```文件夹里的 ```jar包```([点击直接下载](https://raw.githubusercontent.com/BarefootBKK/QQLoginForAndroid/master/qq_sdk_jar/open_sdk_r8353806_lite.jar))  *(这个jar包为腾讯官方于2020年4月27日更新的版本， )*
+ 也可以直接使用本项目 ```qq_sdk_jar```文件夹里的 ```jar包```([点击直接下载](https://raw.githubusercontent.com/BarefootBKK/QQLoginForAndroid/master/qq_sdk_jar/open_sdk_r8353806_lite.jar))  *(这个jar包为腾讯官方于2020年4月27日更新的版本)*
 
   
   
@@ -92,7 +92,7 @@
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loginManager = new QQLoginManager(this, "1110529440");
+        loginManager = new QQLoginManager(this, 你的appid);
         loginManager.setQQLoginListener(new QQLoginManager.QQLoginListener() {
             @Override
             public void onQQLoginSuccess(JSONObject jsonObject) {
