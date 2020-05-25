@@ -1,4 +1,4 @@
-package com.bkk.qqlogin;
+package com.bkk.library;
 
 import android.app.Activity;
 import android.content.Context;

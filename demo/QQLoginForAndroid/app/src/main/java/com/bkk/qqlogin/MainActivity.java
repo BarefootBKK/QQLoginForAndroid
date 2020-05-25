@@ -45,11 +45,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.d(TAG, "onCheckCallback: login=" + login + "  msg=" + json.toString());
                             showMsg("检查登录状态结果: （true代表已登录，false代表未登录）\nlogin = " + login + "\nmsg = " + json.toString());
 
-                            if (login) {
-                                btnLogin.setText("退出登录");
-                            } else {
-                                btnLogin.setText("登录");
-                            }
+                            btnLogin.setText(login ? "退出登录" : "登录");
                         }
                     });
                     break;
