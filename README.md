@@ -9,31 +9,24 @@
   
   
   
-  ## Step 1. 引入SDK JAR包
+  ## Step 1. 添加依赖
   
-  
-  - ***下载Jar包***
-  
-  
-  你可以点击这里可以查看 [最新官方QQ-SDK包版本](http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD) *(下载完成后只需要解压出 libs 文件夹里的 jar文件 即可)*
+#### build.gradle (project)
 
+```
+allprojects {
+    repositories {
+        // ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
 
- 也可以直接使用本项目 ```qq_sdk_jar```文件夹里的 ```jar包```([点击直接下载](https://raw.githubusercontent.com/BarefootBKK/QQLoginForAndroid/master/qq_sdk_jar/open_sdk_r8353806_lite.jar))  *(这个jar包为腾讯官方于2020年4月27日更新的版本)*
+#### build.gradle (app)
 
-  
-  
- - ***在项目里引入Jar包***
-  
-  
-  这里给出一种引入Jar包的方法（其他方法也可以）
-  
-  以*Android Studio*为例：
-  
-  > 将下载好的jar包放到你的安卓项目的 ```app\libs``` 文件夹下
-
-  > 在 *Android Studio* 中点击 ```File->Project Structure```，接下来选择 ```app->Dependencies```，这时候点击右上角的 ```+``` 号，选择 ```Jar dependency```，最后选择上一步 ```libs``` 文件夹里的 ```jar包``` 添加即可
-  
-  
+```
+implementation 'com.github.BarefootBKK:ShadowBanner:1.1.2'
+```
 
   ## Step 2. 修改AndroidManifest文件
   
