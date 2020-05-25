@@ -65,14 +65,7 @@ implementation 'com.github.BarefootBKK:QQLoginForAndroid:1.0.1'
   ```
   
   
-  ## Step 3. 引入QQLoginManager.java文件
-  
-  
-  下载本项目的 ```QQLoginManager.java``` 文件，将其复制到自己的安卓项目中
-  
-  
-  
-  ## Step 4. 代码示例
+  ## Step 3. 代码示例
   
   按照下列示例代码，模仿其添加到自己的Activity类中，之后你就可以在需要的地方（如点击某个按钮后）调用函数：```QQLoginManager.login(activity)```，即可唤起QQ登录
   
