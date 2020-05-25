@@ -25,7 +25,7 @@ allprojects {
 #### build.gradle (app)
 
 ```
-implementation 'com.github.BarefootBKK:ShadowBanner:1.1.2'
+implementation 'com.github.BarefootBKK:QQLoginForAndroid:1.0.1'
 ```
 
   ## Step 2. 修改AndroidManifest文件
