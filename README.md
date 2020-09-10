@@ -77,7 +77,7 @@ implementation 'com.github.BarefootBKK:QQLoginForAndroid:1.0.1'
         setContentView(R.layout.activity_main);
 
         QQLoginManager.init(this, 你的appId);
-        QQLoginManager.setQQLoginListener.setQQLoginListener(new QQLoginManager.QQLoginListener() {
+        QQLoginManager.setQQLoginListener(new QQLoginManager.QQLoginListener() {
             @Override
             public void onQQLoginSuccess(JSONObject jsonObject) {
                 // 登录成功
